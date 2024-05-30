@@ -18,16 +18,16 @@ class Product extends Model
     protected $fillable=[
         'slide_url','title','price',
     ];
-    public function index(Request $request)
-{
-    $categories = Category::all(); // Retrieve all categories
-    $query = $request->input('query'); // Get the search query from the request
+//     public function index(Request $request)
+// {
+//     $categories = Category::all(); // Retrieve all categories
+//     $query = $request->input('query'); // Get the search query from the request
 
-    // Query products based on the search query
-    $products = Product::where('title', 'like', "%$query%")
-                        ->orWhere('description', 'like', "%$query%")
-                        ->get();
+//     // Query products based on the search query
+//     $products = Product::where('title', 'like', "%$query%")
+//                         ->orWhere('description', 'like', "%$query%")
+//                         ->get();
 
-    return view('your_view_name', compact('categories', 'products'));
-}
+//     return view('your_view_name', compact('categories', 'products'));
+// }
 }

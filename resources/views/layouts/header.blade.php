@@ -76,7 +76,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quản lý sản phẩm</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/products/create">Thêm sản phẩm</a></li>
+                        <li><a class="dropdown-item" href="{{ route('products.create') }}">Thêm sản phẩm</a></li>
                         <li><a class="dropdown-item" href="{{ route('products.index') }}">Chỉnh sửa sản phẩm</a></li>
                     </ul>
                 </li>

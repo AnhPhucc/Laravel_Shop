@@ -30,7 +30,7 @@ class CartController extends Controller
         if ($product) {
             $product->quantity += 1;
             $product->save();
-            return redirect()->back()->with('success', 'Thêm sản phẩm vào giỏ hàng');
+            return redirect()->back()->with('success', 'cập nhật sản ống');
 
         }
         Cart::create([
@@ -53,8 +53,11 @@ class CartController extends Controller
     }
     public function deleteCart($id)
     {
-        $cart = Cart::findOrFail($id);
-        $cart->delete();
+        $product = Cart::where('user_id', Auth::id())
+            ->where('product_id', $id)
+            ->first();
+
+        $product->delete();
 
         return redirect()->route('cart.index')->with('success', 'Item removed successfully!');
     }

@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+         $categories = Category::all();
         return view('product.create',compact('categories'));
     }
 
@@ -61,7 +61,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
+        return view('product.show', compact('product'));
     }
 
     /**

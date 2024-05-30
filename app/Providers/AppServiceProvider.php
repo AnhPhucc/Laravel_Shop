@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use App\Models\User;
 use Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('countcartshare', 0);
             } else {
                 $view->with('countcartshare', Cart::where('user_id', Auth::user()->id)->count());
+                $view->with('auths',User::where('id', Auth::user()->id)->first());
             }
         });
     }

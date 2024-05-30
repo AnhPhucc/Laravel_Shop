@@ -6,12 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Danh sách sản phẩm</div>
-
+              
                 <div class="card-body">
                     @if(session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('status')}}
-                    </div>
+                        <div class="alert alert-success" role="alert">
+                            {{session('status')}}
+                        </div>
                     @endif
                     <table class="table">
                         <thead>
@@ -26,27 +26,28 @@
                         <tbody>
                             @php $count = 1 @endphp
                             @foreach($categories as $category)
-                            @foreach($products->where('category_id', $category->id) as $product)
-                            <tr>
-                                <td>{{ $count++ }}</td>
-                                <td>{{ $product->title }}</td>
-                                <td>{{ $product->price }}</td>
-                                <td><img width="250" src="{{ asset('images') }}/{{$product->slide_url}}" alt=""></td>
-                                <td>{{ $category->title }}</td>
-                                <td>
-                                    <a href="{{route('products.edit',[$product->id])}}" class="btn btn-primary">Sửa</a>
-                                    <form action="{{route('products.destroy',[$product->id])}}"  method="POST">
-                                        @method("DELETE")
-                                        @csrf
-                                        <button class="btn btn-danger custom-btn" onclick="return confirm('Bạn muốn xoá danh mục này?');">Xoá</button>
-                                        
-                                    </form>
-                                    
-                                </td>
-                            </tr>
-                            <style>
-</style>
-                            @endforeach
+                                @foreach($products->where('category_id', $category->id) as $product)
+                                    <tr>
+                                        <td>{{ $count++ }}</td>
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td><img width="250" src="{{ asset('images') }}/{{$product->slide_url}}" alt=""></td>
+                                        <td>{{ $category->title }}</td>
+                                        <td>
+                                            <a href="{{route('products.edit', [$product->id])}}" class="btn btn-primary">Sửa</a>
+                                            <form action="{{route('products.destroy', [$product->id])}}" method="POST">
+                                                @method("DELETE")
+                                                @csrf
+                                                <button class="btn btn-danger custom-btn"
+                                                    onclick="return confirm('Bạn muốn xoá danh mục này?');">Xoá</button>
+
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                    <style>
+                                    </style>
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>
@@ -56,5 +57,3 @@
     </div>
 </div>
 @endsection
-
-
